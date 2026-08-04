@@ -15,9 +15,9 @@ pipeline {
                     echo "Repository Files:"
                     ls -la
 
-                    echo "Finding pom.xml:"
-                    find . -name pom.xml
+                    echo "Building Application..."
 
+                    cd app
                     mvn clean package
                 '''
             }
@@ -26,8 +26,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                    echo "Ansible Directory:"
-                    ls -la ansible
+                    echo "Deploying with Ansible..."
 
                     cd ansible
 
