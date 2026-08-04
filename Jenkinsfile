@@ -9,16 +9,16 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                    echo "Current Directory:"
-                    pwd
+                    set -e
 
-                    echo "Repository Files:"
-                    ls -la
-
-                    echo "Building Application..."
+                    echo "Building Java Application..."
 
                     cd app
+
                     mvn clean package
+
+                    echo "Generated JAR:"
+                    ls -lh target/
                 '''
             }
         }
@@ -26,12 +26,16 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
+                    set -e
+
                     echo "Deploying with Ansible..."
 
                     cd ansible
 
                     ANSIBLE_CONFIG=ansible.cfg \
-                    ansible-playbook playbooks/deploy.yml
+                    ansible-playbook \
+                    -i inventory/hosts \
+                    playbooks/deploy.yml
                 '''
             }
         }

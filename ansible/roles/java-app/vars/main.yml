@@ -2,3 +2,4 @@
 workspace: "{{ lookup('env', 'WORKSPACE') }}"
 app_name: demo
 jar_file: "demo-1.0.jar"
+app_dir: /opt/java-app
