@@ -9,18 +9,19 @@ pipeline {
         stage('Clean') {
             steps {
                 cleanWs()
-                checkout scm
             }
         }
 
-       stage('Build') {
-    steps {
-        sh '''
-            cd app
-            mvn clean package
-        '''
-    }
-}}
+        stage('Build') {
+            steps {
+                sh '''
+                    ls -la
+                    find . -name pom.xml
+                    cd app
+                    mvn clean package
+                '''
+            }
+        }
 
         stage('Deploy') {
             steps {
