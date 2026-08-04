@@ -6,11 +6,7 @@ pipeline {
 
     stages {
 
-        stage('Clean') {
-            steps {
-                cleanWs()
-            }
-        }
+        
 
         stage('Build') {
             steps {
