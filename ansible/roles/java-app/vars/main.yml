@@ -1,0 +1,2 @@
+roles/java-app/vars/main.yml
+workspace: "{{ lookup('env','WORKSPACE') }}"

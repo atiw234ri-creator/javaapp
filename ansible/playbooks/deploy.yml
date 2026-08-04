@@ -1,0 +1,11 @@
+- hosts: app
+
+  become: yes
+
+  vars_files:
+
+      - ../../vault/secret.yml
+
+  roles:
+
+      - java-app

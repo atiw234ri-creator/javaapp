@@ -1,0 +1,14 @@
+- name: Create application directory
+  file:
+    path: /opt/demo
+    state: directory
+
+- name: Copy jar
+  copy:
+    src: "{{ workspace }}/app/target/demo.jar"
+    dest: /opt/demo/demo.jar
+
+- name: Run application
+  shell: |
+      pkill java || true
+      nohup java -jar /opt/demo/demo.jar &
