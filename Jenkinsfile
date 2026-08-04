@@ -34,7 +34,7 @@ pipeline {
 
                     ANSIBLE_CONFIG=ansible.cfg \
                     ansible-playbook \
-                    -i inventory/hosts \
+                    -i inventory/hosts.ini \
                     playbooks/deploy.yml
                 '''
             }
