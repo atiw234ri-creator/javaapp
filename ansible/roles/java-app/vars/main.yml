@@ -1,2 +1,4 @@
-roles/java-app/vars/main.yml
-workspace: "{{ lookup('env','WORKSPACE') }}"
+---
+workspace: "{{ lookup('env', 'WORKSPACE') }}"
+app_name: demo
+jar_file: "demo-1.0.jar"
