@@ -23,9 +23,24 @@ pipeline {
 
         stage('Validate') {
             steps {
+<<<<<<< HEAD
                 dir('app') {
                     sh 'mvn validate'
                 }
+=======
+                sh '''
+                    set -e
+
+                    echo "Deploying with Ansible..."
+
+                    cd ansible
+
+                    ANSIBLE_CONFIG=ansible.cfg \
+                    ansible-playbook \
+                    -i inventory/hosts.ini \
+                    playbooks/deploy.yml
+                '''
+>>>>>>> 57da2dde2e7e0cdabcbdb7a7789015f1d4fd789b
             }
         }
 
@@ -93,6 +108,7 @@ pipeline {
         }
 
     }
+<<<<<<< HEAD
 
     post {
 
@@ -107,3 +123,6 @@ pipeline {
     }
 
 }
+=======
+}
+>>>>>>> 57da2dde2e7e0cdabcbdb7a7789015f1d4fd789b
